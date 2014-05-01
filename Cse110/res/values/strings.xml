@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Cse110</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="app_id">1447134645529199</string>
+    <string name="title_activity_home_page">HomePageActivity</string>
+    <string name="home_page">Home Page</string>
+    <string name="fblogout">fblogout</string>
+
+</resources>
