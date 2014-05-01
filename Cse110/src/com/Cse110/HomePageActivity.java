@@ -3,6 +3,8 @@ package com.Cse110;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -49,10 +51,21 @@ public class HomePageActivity extends ActionBarActivity {
 	    }
 	}
 	public void fbLogout() {
-	    Session session = Session.getActiveSession();
-	    session.closeAndClearTokenInformation();
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+		
+	    final Session sessionLogOut = Session.getActiveSession();
+        final Intent intentLogOut = new Intent(this, MainActivity.class);
+        
+		new AlertDialog.Builder(this)
+		.setTitle("Logout")
+		.setMessage("Do you really want to logout?")
+		.setIcon(android.R.drawable.ic_dialog_alert)
+		.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+		    public void onClick(DialogInterface dialog, int whichButton) {
+			    sessionLogOut.closeAndClearTokenInformation();
+		        startActivity(intentLogOut);		    }})
+		 .setNegativeButton(android.R.string.no, null).show();
+		
 	}
 	/**
 	 * A placeholder fragment containing a simple view.
