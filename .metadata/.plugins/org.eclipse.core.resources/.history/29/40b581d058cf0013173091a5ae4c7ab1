@@ -1,0 +1,7 @@
+package com.newlogin;
+
+import android.support.v4.app.Fragment;
+
+public class SelectionFragment extends Fragment {
+
+}
