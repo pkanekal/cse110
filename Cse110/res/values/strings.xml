@@ -8,5 +8,6 @@
     <string name="title_activity_home_page">HomePageActivity</string>
     <string name="home_page">Home Page</string>
     <string name="fblogout">fblogout</string>
+    <string name="Facebook_Logout">Facebook Logout</string>
 
 </resources>
