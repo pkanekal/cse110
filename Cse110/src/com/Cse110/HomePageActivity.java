@@ -15,20 +15,42 @@ import android.view.ViewGroup;
 
 import com.Cse110.R;
 import com.facebook.Session;
+import com.parse.*;
+
 
 public class HomePageActivity extends ActionBarActivity {
-
+	private String AppId = "PFeVg2evGtAWYkKlIe11myOGl2Wsw4bpygimtWcT";
+    private String ClientKey = "AmbMohWlGph7KEZfZMl4LnbVBj8M20fThtOIzn7P";
+    
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home_page);
 
+		// Add your initialization code here
+        Parse.initialize(this, AppId, ClientKey);
+        ParseUser.enableAutomaticUser();
+        ParseACL defaultACL = new ParseACL();
+        
+        // If you would like all objects to be private by default, remove this line.
+        defaultACL.setPublicReadAccess(true);
+        ParseACL.setDefaultACL(defaultACL, true);
+        
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
 	}
 
+    public static void Save(String restaurantName, String zipCode, String category)
+    {
+    ParseObject newRestaurant = new ParseObject("Restaurant");
+    newRestaurant.put("RestaurantName", restaurantName);
+    newRestaurant.put("ZipCode", zipCode);
+    newRestaurant.put("Category", category);
+    newRestaurant.saveInBackground();
+    }
+    
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 
